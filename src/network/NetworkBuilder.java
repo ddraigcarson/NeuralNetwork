@@ -1,5 +1,9 @@
 package network;
 
+import persistance.FilePersistance;
+import persistance.Persistance;
+import tools.ArrayTools;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +14,7 @@ public class NetworkBuilder {
     private List<Integer> layers;
     private double[][][] weights;
     private double[][] bias;
+    private boolean requiresTraining;
 
     private int NO_OF_LAYERS;
 
@@ -17,6 +22,7 @@ public class NetworkBuilder {
         Network network = new Network(getLayers());
         network.weights = weights;
         network.bias = bias;
+        network.requiresTraining = requiresTraining;
         return network;
     }
 
@@ -49,6 +55,28 @@ public class NetworkBuilder {
         return this;
     }
 
+    public NetworkBuilder withDataSet(String dataSet) {
+        Persistance persistance = new FilePersistance();
+        boolean existingWeights = persistance.checkForExistingSource("/output/" + dataSet + WEIGHTS_FILE_NAME);
+        boolean existingBiases = persistance.checkForExistingSource("/output/" + dataSet + BIASES_FILE_NAME);
+
+        if(existingBiases && existingWeights) {
+            System.out.println("Loading existing weights and biases");
+            double[][][] weights = ArrayTools.to3DArray(persistance.readSourceFromFile("/output/" + dataSet + WEIGHTS_FILE_NAME), getLayers());
+            double[][] biases = ArrayTools.to2DArray(persistance.readSourceFromFile("/output/" + dataSet + BIASES_FILE_NAME), getLayers());
+
+            withWeights(weights);
+            withBiases(biases);
+            requiresTraining = false;
+        } else {
+            System.out.println("Creating a new network");
+            withRandomBiases();
+            withRandomWeights();
+            requiresTraining = true;
+        }
+        return this;
+    }
+
     public NetworkBuilder withRandomWeights() {
         weights = new double[NO_OF_LAYERS][][];
         for (int i = 1; i< NO_OF_LAYERS; i++) {
@@ -59,6 +87,7 @@ public class NetworkBuilder {
                     WEIGHTS_UPPER_BOUND
             );
         }
+        requiresTraining = true;
         return this;
     }
 
@@ -71,6 +100,7 @@ public class NetworkBuilder {
                     BIAS_UPPER_BOUND
             );
         }
+        requiresTraining = true;
         return this;
     }
 

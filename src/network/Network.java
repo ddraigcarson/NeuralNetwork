@@ -4,6 +4,8 @@ import trainset.TrainSet;
 
 public class Network {
 
+    public boolean requiresTraining = true;
+
     private double[][] output;
     public double[][][] weights;
     public double[][] bias;

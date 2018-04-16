@@ -1,62 +1,50 @@
-import network.NetworkBuilder;
-import persistance.FileIO;
 import network.Network;
+import network.NetworkBuilder;
 import network.NetworkTools;
-import persistance.Storage;
+import network.NetworkTrainer;
+import persistance.FilePersistance;
+import persistance.Persistance;
+import tools.ArrayTools;
+import trainset.MnistTrainSetTools;
 import trainset.TrainSet;
 
 import static network.NetworkConstants.*;
-import static trainset.MnistTrainSetTools.createTrainSet;
 
 public class Main {
 
+    private static final String DATA_SET = "mnist";
+
     public static void main(String[] args) {
-        Storage storage = new FileIO();
-        boolean existingNetwork = storage.checkForExistingWeights() && storage.checkForExistingBiases();
-
         NetworkBuilder builder = new NetworkBuilder();
-        Network network = null;
+        Network network = builder.newNetwork()
+                .addInputLayer(INPUT_NEURONS)
+                .addHiddenLayer(HIDDEN_LAYER_1_NEURONS)
+                .addHiddenLayer(HIDDEN_LAYER_2_NEURONS)
+                .addOutputLayer(OUTPUT_NEURONS)
+                .withDataSet(DATA_SET)
+                .build();
 
-        if (existingNetwork) {
-            System.out.println("Loading existing weights and biases");
+        if (network.requiresTraining) {
+            System.out.println("Training start");
 
-            network = builder.newNetwork()
-                    .addInputLayer(INPUT_NEURONS)
-                    .addHiddenLayer(HIDDEN_LAYER_1_NEURONS)
-                    .addHiddenLayer(HIDDEN_LAYER_2_NEURONS)
-                    .addOutputLayer(OUTPUT_NEURONS)
-                    .withWeights(storage.readWeightsFromFile(builder.getLayers()))
-                    .withBiases(storage.readBiasesFromFile(builder.getLayers()))
-                    .build();
+            NetworkTrainer trainer = new NetworkTrainer();
+            trainer.addNetwork(network)
+                    .addImageStartIndex(TRAINING_IMAGES_START)
+                    .addImageEndIndex(TRAINING_IMAGES_END)
+                    .addTrainingEpochs(TRAINING_EPOCHS)
+                    .addTrainingLoops(TRAINING_LOOPS)
+                    .addTrainingBatchSize(TRAINING_BATCH_SIZE)
+                    .train();
 
-            System.out.println("Loaded existing weights and biases");
-        } else {
-            network = builder.newNetwork()
-                    .addInputLayer(INPUT_NEURONS)
-                    .addHiddenLayer(HIDDEN_LAYER_1_NEURONS)
-                    .addHiddenLayer(HIDDEN_LAYER_2_NEURONS)
-                    .addOutputLayer(OUTPUT_NEURONS)
-                    .withRandomWeights()
-                    .withRandomBiases()
-                    .build();
-
-            TrainSet set = createTrainSet(TRAINING_IMAGES_START, TRAINING_IMAGES_END);
-            trainData(network, set, 100, 50, TRAINING_BATCH_SIZE);
-
-            storage.writeWeightsToFile(network.weights);
-            storage.writeBiasesToFile(network.bias);
+            System.out.println("Training complete");
+            trainer.addDataSet(DATA_SET).persistNetworkValues();
         }
 
-        TrainSet testSet = createTrainSet(TEST_IMAGES_START, TEST_IMAGES_END);
+        TrainSet testSet = MnistTrainSetTools.createTrainSet(TEST_IMAGES_START, TEST_IMAGES_END);
         testTrainSet(network, testSet, 10);
     }
 
 
-    public static void trainData(Network net, TrainSet set, int epochs, int loops, int batch_size) {
-        for (int e=0 ; e<epochs ; e++) {
-            net.train(set, loops, batch_size);
-        }
-    }
 
     public static void testTrainSet(Network net, TrainSet set, int printSteps) {
         int correct = 0;
