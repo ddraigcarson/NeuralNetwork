@@ -1,15 +1,16 @@
 package network;
 
+import dataset.DataSet;
+import dataset.DataSetBuilder;
 import persistance.FilePersistance;
 import persistance.Persistance;
 import tools.ArrayTools;
-import trainset.MnistTrainSetTools;
-import trainset.TrainSet;
 
 public class NetworkTrainer {
 
     private Network network;
     private String dataSet;
+    private DataSetBuilder dataSetBuilder;
     private int imageStartIndex;
     private int imageEndIndex;
     private int trainingEpochs;
@@ -17,11 +18,11 @@ public class NetworkTrainer {
     private int trainingBatchSize;
 
     public void train() {
-        TrainSet set = MnistTrainSetTools.createTrainSet(imageStartIndex, imageEndIndex);
+        DataSet set = dataSetBuilder.createDataSet(imageStartIndex, imageEndIndex);
         trainData(network, set, trainingEpochs, trainingLoops, trainingBatchSize);
     }
 
-    private void trainData(Network net, TrainSet set, int epochs, int loops, int batch_size) {
+    private void trainData(Network net, DataSet set, int epochs, int loops, int batch_size) {
         for (int e=0 ; e<epochs ; e++) {
             net.train(set, loops, batch_size);
         }
@@ -41,6 +42,11 @@ public class NetworkTrainer {
 
     public NetworkTrainer addDataSet(String value) {
         dataSet = value;
+        return this;
+    }
+
+    public NetworkTrainer addDataSetBuilder(DataSetBuilder value) {
+        dataSetBuilder = value;
         return this;
     }
 

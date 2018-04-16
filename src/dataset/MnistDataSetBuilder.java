@@ -1,4 +1,4 @@
-package trainset;
+package dataset;
 
 import mnist.MnistImageFile;
 import mnist.MnistLabelFile;
@@ -9,7 +9,8 @@ import static network.NetworkConstants.*;
 import static network.NetworkConstants.INPUT_NEURONS;
 import static network.NetworkConstants.OUTPUT_NEURONS;
 
-public class MnistTrainSetTools {
+public class MnistDataSetBuilder implements DataSetBuilder {
+
     /**
      * Creates new MNIST database image persistance ready for reading.
      *
@@ -17,7 +18,7 @@ public class MnistTrainSetTools {
      *            Image idx index start
      * @param end
      *            Image idx index end
-     * @return TrainSet
+     * @return DataSet
      *
      * Loop over all the images
      * FOR EVERY IMAGE IN TRAINING SET
@@ -27,8 +28,10 @@ public class MnistTrainSetTools {
      * - INITIALISE THE OUTPUT SET - each value is set to 0 (double default) then the output neuron with i=the images number is set to 1
      * -- FOR EACH INPUT NEURON SET IT TO A 0-1 VALUE CORRESPONDING TO THE COLOUR OF THE PIXEL
      */
-    public static TrainSet createTrainSet(int start, int end) {
-        TrainSet set = new TrainSet(INPUT_NEURONS, OUTPUT_NEURONS);
+
+    @Override
+    public DataSet createDataSet(int start, int end) {
+        DataSet set = new DataSet(INPUT_NEURONS, OUTPUT_NEURONS);
 
         try {
             String path = new File("").getAbsolutePath();

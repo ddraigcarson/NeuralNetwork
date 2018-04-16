@@ -1,6 +1,6 @@
 package network;
 
-import trainset.TrainSet;
+import dataset.DataSet;
 
 public class Network {
 
@@ -50,13 +50,13 @@ public class Network {
 
     }
 
-    public void train(TrainSet set, int loops, int batch_size) {
+    public void train(DataSet set, int loops, int batch_size) {
         if (set.INPUT_SIZE != INPUT_SIZE || set.OUTPUT_SIZE != OUTPUT_SIZE) {
             return;
         }
 
         for (int i=0 ; i<loops ; i++) {
-            TrainSet batch = set.extractBatch(batch_size);
+            DataSet batch = set.extractBatch(batch_size);
             for (int b=0 ; b<batch_size ; b++) {
                 this.train(batch.getInput(b), batch.getOutput(b), 0.3);
             }
@@ -76,7 +76,7 @@ public class Network {
     /*
     * MSE Mean of Squared Errors
     * */
-    public double MSE(TrainSet set) {
+    public double MSE(DataSet set) {
       double v=0;
       for (int i=0 ; i<set.size(); i++) {
           v += MSE(set.getInput(i), set.getOutput(i));

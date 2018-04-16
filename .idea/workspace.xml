@@ -2,16 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3647a691-4a87-46e9-9315-a11cd77a0964" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/dataset/DataSetBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/network/Network.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/network/Network.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/network/NetworkBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/network/NetworkBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/network/NetworkTester.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/network/NetworkTrainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NeuralNetwork/network/NetworkTrainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/readMe.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/trainset/MnistTrainSetTools.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NeuralNetwork/trainset/TrainSet.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/output/mnist/biases.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/output/mnist/weights.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/NetworkTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/Network.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/network/NetworkTrainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/NetworkTrainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trainset/MnistTrainSetTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataset/MnistDataSetBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trainset/TrainSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataset/DataSet.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,23 +31,23 @@
     <splitter split-orientation="horizontal" split-proportion="0.48839977">
       <split-first>
         <leaf>
-          <file leaf-file-name="NetworkTrainer.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/network/NetworkTrainer.java">
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="352">
-                  <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state relative-caret-position="561">
+                  <caret line="40" column="66" selection-start-line="40" selection-start-column="66" selection-end-line="40" selection-end-column="66" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Network.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/network/Network.java">
+          <file leaf-file-name="MnistDataSetBuilder.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/dataset/MnistDataSetBuilder.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="127" column="26" selection-start-line="127" selection-start-column="19" selection-end-line="127" selection-end-column="26" />
+                <state relative-caret-position="153">
+                  <caret line="32" column="32" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="32" />
+                  <folding>
+                    <element signature="docComment;method#createTrainSet#0;class#MnistTrainSetTools#0" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -68,20 +74,14 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <file leaf-file-name="NetworkTrainer.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/network/NetworkTrainer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="48" column="47" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="47" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MnistTrainSetTools.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/trainset/MnistTrainSetTools.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+                <state relative-caret-position="408">
+                  <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -93,10 +93,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>TrainSet</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -108,8 +113,13 @@
         <option value="$PROJECT_DIR$/src/persistance/FilePersistance.java" />
         <option value="$PROJECT_DIR$/src/tools/ArrayTools.java" />
         <option value="$PROJECT_DIR$/src/network/NetworkConstants.java" />
-        <option value="$PROJECT_DIR$/src/network/Network.java" />
         <option value="$PROJECT_DIR$/src/network/NetworkBuilder.java" />
+        <option value="$PROJECT_DIR$/src/trainset/MnistTrainSetTools.java" />
+        <option value="$PROJECT_DIR$/src/trainset/MnistDataSetBuilder.java" />
+        <option value="$PROJECT_DIR$/src/trainset/DataSetBuilder.java" />
+        <option value="$PROJECT_DIR$/src/network/Network.java" />
+        <option value="$PROJECT_DIR$/src/dataset/DataSetBuilder.java" />
+        <option value="$PROJECT_DIR$/src/dataset/MnistDataSetBuilder.java" />
         <option value="$PROJECT_DIR$/src/network/NetworkTrainer.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
@@ -150,7 +160,25 @@
             <path>
               <item name="NeuralNetwork" type="b2602c69:ProjectViewProjectNode" />
               <item name="NeuralNetwork" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="fashion" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NeuralNetwork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NeuralNetwork" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="mnist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NeuralNetwork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NeuralNetwork" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NeuralNetwork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NeuralNetwork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="dataset" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NeuralNetwork" type="b2602c69:ProjectViewProjectNode" />
@@ -253,7 +281,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" />
@@ -307,9 +334,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/readMe.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tools/ArrayTools.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="655">
@@ -321,23 +345,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="1" selection-start-column="1" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/trainset/MnistTrainSetTools.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/NetworkTrainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -365,17 +372,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="48" column="47" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="47" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/readMe.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/network/Network.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="127" column="26" selection-start-line="127" selection-start-column="19" selection-end-line="127" selection-end-column="26" />
+        <state relative-caret-position="351">
+          <caret line="55" column="9" lean-forward="true" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataset/DataSetBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataset/DataSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/NetworkTrainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataset/MnistDataSetBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="32" column="32" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="32" />
+          <folding>
+            <element signature="docComment;method#createTrainSet#0;class#MnistTrainSetTools#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="40" column="66" selection-start-line="40" selection-start-column="66" selection-end-line="40" selection-end-column="66" />
         </state>
       </provider>
     </entry>
