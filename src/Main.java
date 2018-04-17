@@ -38,27 +38,12 @@ public class Main {
             trainer.addDataSet(DATA_SET).persistNetworkValues();
         }
 
-        DataSet testSet = new MnistDataSetBuilder().createDataSet(TEST_IMAGES_START, TEST_IMAGES_END);
-        testTrainSet(network, testSet, 10);
-    }
-
-
-
-    public static void testTrainSet(Network net, DataSet set, int printSteps) {
-        int correct = 0;
-
-        for (int i=0 ; i<set.size() ; i++) {
-            double highest = NetworkTools.indexOfHighestValue(net.calculate((set.getInput(i))));
-            double actualHighest = NetworkTools.indexOfHighestValue(set.getOutput(i));
-
-            if(highest == actualHighest) {
-                correct++;
-            }
-            if(i%printSteps == 0) {
-                System.out.println(i + ": " + (double)correct / (double) (i + 1));
-            }
-            System.out.println("Testing finished, RESULT: " + correct + " / " + set.size()+ "  -> " + (double)correct*100 / (double)set.size() +" %");
-        }
+        NetworkTrainer tester = new NetworkTrainer();
+        tester.addNetwork(network)
+                .addDataSetBuilder(new MnistDataSetBuilder())
+                .addImageStartIndex(TEST_IMAGES_START)
+                .addImageEndIndex(TEST_IMAGES_END)
+                .test();
     }
 
 }

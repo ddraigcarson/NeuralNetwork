@@ -17,24 +17,6 @@ public class NetworkTrainer {
     private int trainingLoops;
     private int trainingBatchSize;
 
-    public void train() {
-        DataSet set = dataSetBuilder.createDataSet(imageStartIndex, imageEndIndex);
-        trainData(network, set, trainingEpochs, trainingLoops, trainingBatchSize);
-    }
-
-    private void trainData(Network net, DataSet set, int epochs, int loops, int batch_size) {
-        for (int e=0 ; e<epochs ; e++) {
-            net.train(set, loops, batch_size);
-        }
-    }
-
-    public NetworkTrainer persistNetworkValues() {
-        Persistance persistance = new FilePersistance();
-        persistance.writeSourceToFile("/output/" + dataSet + "/weights.csv", ArrayTools.toString(network.weights));
-        persistance.writeSourceToFile("/output/" + dataSet + "/biases.csv", ArrayTools.toString(network.bias));
-        return this;
-    }
-
     public NetworkTrainer addNetwork(Network value){
         network = value;
         return this;
@@ -75,4 +57,35 @@ public class NetworkTrainer {
         return this;
     }
 
+    public void train() {
+        DataSet set = dataSetBuilder.createDataSet(imageStartIndex, imageEndIndex);
+        for (int epoch=0 ; epoch<trainingEpochs ; epoch++) {
+            network.train(set, trainingLoops, trainingBatchSize);
+        }
+    }
+
+    public void test() {
+        DataSet set = dataSetBuilder.createDataSet(imageStartIndex, imageEndIndex);
+
+        int correctGuesses = 0;
+        for (int test=0 ; test<set.size() ; test++) {
+            double networkGuess = NetworkTools.indexOfHighestValue(network.calculate(set.getInput(test)));
+            double actualValue  = NetworkTools.indexOfHighestValue(set.getOutput(test));
+
+            if (networkGuess == actualValue) {
+                correctGuesses++;
+            }
+            if (test%10 == 0) {
+                System.out.println(test + ": " + (double)correctGuesses / (double) (test + 1));
+            }
+            System.out.println("Testing finished, RESULT: " + correctGuesses + " / " + set.size()+ "  -> " + (double)correctGuesses*100 / (double)set.size() +" %");
+        }
+    }
+
+    public NetworkTrainer persistNetworkValues() {
+        Persistance persistance = new FilePersistance();
+        persistance.writeSourceToFile("/output/" + dataSet + "/weights.csv", ArrayTools.toString(network.weights));
+        persistance.writeSourceToFile("/output/" + dataSet + "/biases.csv", ArrayTools.toString(network.bias));
+        return this;
+    }
 }
