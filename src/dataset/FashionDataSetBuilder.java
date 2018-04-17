@@ -1,16 +1,14 @@
 package dataset;
 
-import mnist.MnistConstants;
+import fashion.FashionConstants;
 import mnist.MnistImageFile;
 import mnist.MnistLabelFile;
 
 import java.io.File;
 
 import static network.NetworkConstants.*;
-import static network.NetworkConstants.INPUT_NEURONS;
-import static network.NetworkConstants.OUTPUT_NEURONS;
 
-public class MnistDataSetBuilder implements DataSetBuilder {
+public class FashionDataSetBuilder implements DataSetBuilder {
 
     /**
      * Creates new MNIST database image persistance ready for reading.
@@ -30,6 +28,14 @@ public class MnistDataSetBuilder implements DataSetBuilder {
      * -- FOR EACH INPUT NEURON SET IT TO A 0-1 VALUE CORRESPONDING TO THE COLOUR OF THE PIXEL
      */
 
+    private String imageFileLocation;
+    private String labelFileLocation;
+
+    public FashionDataSetBuilder(String imageFileLocation, String labelFileLocation) {
+        this.imageFileLocation = imageFileLocation;
+        this.labelFileLocation = labelFileLocation;
+    }
+
     @Override
     public DataSet createDataSet(int start, int end) {
         DataSet set = new DataSet(INPUT_NEURONS, OUTPUT_NEURONS);
@@ -37,8 +43,8 @@ public class MnistDataSetBuilder implements DataSetBuilder {
         try {
             String path = new File("").getAbsolutePath();
 
-            MnistImageFile m = new MnistImageFile(path + MnistConstants.IMAGE_FILE_PATH, MnistConstants.IMAGE_FILE_ACCESS_MODE);
-            MnistLabelFile l = new MnistLabelFile(path + MnistConstants.IMAGE_LABEL_PATH, MnistConstants.IMAGE_FILE_ACCESS_MODE);
+            MnistImageFile m = new MnistImageFile(path + imageFileLocation, FashionConstants.IMAGE_FILE_ACCESS_MODE);
+            MnistLabelFile l = new MnistLabelFile(path + labelFileLocation, FashionConstants.IMAGE_FILE_ACCESS_MODE);
 
             for (int image=start ; image<=end ; image++) {
                 printEveryXIterations("prepared: " + image, 100, image);

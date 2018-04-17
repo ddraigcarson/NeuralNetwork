@@ -8,27 +8,12 @@ public class NetworkConstants {
     public static int HIDDEN_LAYER_1_NEURONS = 70; // TODO Why this number?
     public static int HIDDEN_LAYER_2_NEURONS = 35; // TODO Why this number?
 
-    public static int TRAINING_IMAGES_START = 0;
-    public static int TRAINING_IMAGES_END = 4999;
-
-    public static int TEST_IMAGES_START = 5000;
-    public static int TEST_IMAGES_END = 9999;
-
     public static int TRAINING_BATCH_SIZE = 100;
     public static int TRAINING_EPOCHS = 100;
     public static int TRAINING_LOOPS = 50;
 
     public static String WEIGHTS_FILE_NAME = "/weights.csv";
     public static String BIASES_FILE_NAME = "/biases.csv";
-
-    /*
-     * IDX is an index persistance extension commonly used in Windows to speed up the search
-     * in a db
-     * */
-    public static String IMAGE_FILE_PATH = "/res/mnist/trainImage.idx3-ubyte";
-    public static String IMAGE_LABEL_PATH = "/res/mnist/trainLabel.idx1-ubyte";
-
-    public static String IMAGE_FILE_ACCESS_MODE = "rw";
 
     /*
     * 0 == white
